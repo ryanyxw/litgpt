@@ -410,6 +410,11 @@ def generate(
         include_prompt: If true (default) prepends the prompt (after applying the prompt style) to the output.
     """
 
+    import pdb
+    pdb.set_trace()
+
+    print("yayyy custom edit")
+
     token_list = list(
         generate_fn(
             include_prompt=include_prompt,
