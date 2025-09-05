@@ -636,6 +636,9 @@ def instantiate_torch_optimizer(optimizer, model_parameters, **kwargs):
     #   grokadamw.GrokAdamW
     #   torch.optim.RMSprop
 
+    print("HEJRKLEJKSLFRJEDS")
+    import pdb
+    pdb.set_trace()
 
 
     if isinstance(optimizer, str):
