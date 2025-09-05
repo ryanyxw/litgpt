@@ -636,6 +636,8 @@ def instantiate_torch_optimizer(optimizer, model_parameters, **kwargs):
     #   grokadamw.GrokAdamW
     #   torch.optim.RMSprop
 
+
+
     if isinstance(optimizer, str):
         if "." in optimizer:
             class_module, class_name = optimizer.rsplit(".", 1)
@@ -650,6 +652,7 @@ def instantiate_torch_optimizer(optimizer, model_parameters, **kwargs):
         optimizer = optimizer_cls(model_parameters, **kwargs)
     elif isinstance(optimizer, dict):
         optimizer = dict(optimizer)
+        breakpoint()
         class_module, class_name = optimizer["class_path"].rsplit(".", 1)
         module = __import__(class_module, fromlist=[class_name])
         optimizer_cls = getattr(module, class_name)
