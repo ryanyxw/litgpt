@@ -189,6 +189,9 @@ def main(
 ) -> None:
     validate_args(train, eval, initial_checkpoint_dir, resume)
 
+    print("ENTERED")
+    breakpoint()
+
     if fabric.global_rank == 0:
         out_dir.mkdir(parents=True, exist_ok=True)
 
