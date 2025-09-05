@@ -97,6 +97,10 @@ def setup(
         logger_name: The name of the logger to send metrics to.
         seed: The random seed to use for reproducibility.
     """
+
+    import pdb
+    pdb.set_trace()
+
     if model_name == "list":
         available_models = "\n".join(sorted(name_to_config))
         print(f"Available values:\n{available_models}")
