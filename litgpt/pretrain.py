@@ -190,9 +190,6 @@ def main(
 ) -> None:
     validate_args(train, eval, initial_checkpoint_dir, resume)
 
-    print("ENTERED")
-    breakpoint()
-
     if fabric.global_rank == 0:
         out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -220,7 +217,7 @@ def main(
     optimizer = fabric.setup_optimizers(optimizer)
 
     # TODO: delete
-    model.max_seq_length = 3
+    model.max_seq_length = 11
 
     train_dataloader, val_dataloader = get_dataloaders(fabric, data, tokenizer, train, model.max_seq_length)
     train_dataloader, val_dataloader = fabric.setup_dataloaders(train_dataloader, val_dataloader)
