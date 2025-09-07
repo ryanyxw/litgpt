@@ -58,6 +58,9 @@ class LitData(DataModule):
             shuffle=train,
             seed=self.seed,
         )
+
+        import pdb
+        pdb.set_trace()
         dataloader = StreamingDataLoader(
             dataset, batch_size=self.batch_size, pin_memory=True, num_workers=self.num_workers, drop_last=True
         )
