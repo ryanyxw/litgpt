@@ -217,7 +217,7 @@ def main(
     optimizer = fabric.setup_optimizers(optimizer)
 
     # TODO: Remove later
-    model.max_seq_length = 512
+    model.max_seq_length = 32
 
     train_dataloader, val_dataloader = get_dataloaders(fabric, data, tokenizer, train, model.max_seq_length)
     train_dataloader, val_dataloader = fabric.setup_dataloaders(train_dataloader, val_dataloader)
