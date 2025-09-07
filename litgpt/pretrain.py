@@ -356,8 +356,6 @@ def fit(
             loss = chunked_cross_entropy(logits, targets)
             fabric.backward(loss / train.gradient_accumulation_iters(devices, num_nodes))
 
-        import pdb
-        pdb.set_trace()
         running_loss.update(loss.detach())
 
         if not is_accumulating:
