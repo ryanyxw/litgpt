@@ -349,8 +349,6 @@ def fit(
 
         input_ids = train_data[:, 0 : model.max_seq_length].contiguous().long()
         targets = train_data[:, 1 : (model.max_seq_length + 1)].contiguous().long()
-        import pdb
-        pdb.set_trace()
 
         is_accumulating = state["iter_num"] % train.gradient_accumulation_iters(devices, num_nodes) != 0
         with fabric.no_backward_sync(model, enabled=is_accumulating):
@@ -358,6 +356,8 @@ def fit(
             loss = chunked_cross_entropy(logits, targets)
             fabric.backward(loss / train.gradient_accumulation_iters(devices, num_nodes))
 
+        import pdb
+        pdb.set_trace()
         running_loss.update(loss.detach())
 
         if not is_accumulating:
