@@ -66,9 +66,6 @@ class TextFiles(DataModule):
             val_files, *train_files = train_files
             val_files = [val_files]
 
-        import pdb
-        pdb.set_trace()
-
         # It's ok to use almost all CPUs here because this runs in a single process
         num_workers = os.cpu_count() - 1
         use_workers = min(num_workers, len(train_files))
@@ -90,8 +87,6 @@ class TextFiles(DataModule):
                 f" reprocessing: `rm -rf {self.out_path_train}`\n"
             )
 
-        import pdb
-        pdb.set_trace()
         use_workers = min(num_workers, len(val_files))
         if not Path(self.out_path_val).is_dir():
             validate_tokenizer(self.tokenizer)
@@ -114,7 +109,6 @@ class TextFiles(DataModule):
     def train_dataloader(self) -> DataLoader:
         from litdata.streaming import StreamingDataLoader, StreamingDataset, TokensLoader
 
-        breakpoint()
         train_dataset = StreamingDataset(
             input_dir=str(self.out_path_train),
             item_loader=TokensLoader(block_size=self.max_seq_length),
