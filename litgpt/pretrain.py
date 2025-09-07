@@ -139,7 +139,8 @@ def setup(
     )
 
     if devices * num_nodes > 1:
-        strategy = FSDPStrategy(auto_wrap_policy={Block}, state_dict_type="full", sharding_strategy="HYBRID_SHARD")
+        # strategy = FSDPStrategy(auto_wrap_policy={Block}, state_dict_type="full", sharding_strategy="HYBRID_SHARD")
+        strategy = FSDPStrategy(auto_wrap_policy={Block}, state_dict_type="full", sharding_strategy="FULL_SHARD")
     else:
         strategy = "auto"
 
